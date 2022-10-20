@@ -13,14 +13,18 @@ button1 = digitalio.DigitalInOut(board.GP20)
 button1.direction = digitalio.Direction.INPUT
 button1.pull = digitalio.Pull.UP
 #Declaramos el pin y funcion de input pull-up al botón 2.
+button2 = digitalio.DigitalInOut(board.GP25) #Buscar pin
+button2.direction = digitalio.Direction.INPUT
+button2.pull = digitalio.Pull.UP
+#Declaramos el pin y funcion de input pull-up al botón 2.
 led = digitalio.DigitalInOut(board.GP25)
 led.direction = digitalio.Direction.OUTPUT
 #Declaramos el pin y funcion de output del led incorporado en la placa.
 LEFT_BUTTON = 1
-m = Mouse(usb_hid.devices) #creamos un objeto de mouse, para luego utilizarlo en el main() 
+m = Mouse(usb_hid.devices) #Creamos un objeto de mouse, para luego utilizarlo en el main() 
 
 def main():
-    if not button0.value or not button1.value: #Como devuelve un booleano negativo, pedimos que si NO es Negativo, clickee.
+    if not button0.value or not button1.value or not button2.value: #Como devuelve un booleano negativo, pedimos que si NO es Negativo, clickee.
         print('Button pressed!')
         m.click(Mouse.LEFT_BUTTON)#Llamamos a la funcion mouse y realizamos el click izquierdo.
         t.sleep(0.5) #Damos un tiempo de descanso para que no se realizen muchos clicks al mismo tiempo al realizar solo uno.
